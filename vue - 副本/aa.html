@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script type='text/javascript' src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="text" v-model="a">
+        <select name="" id="" v-model="operation">
+            <option value="0">+</option>
+            <option value="1">-</option>
+            <option value="2">*</option>
+            <option value="3">/</option>
+        </select>
+        <input type="text" v-model="b">
+        <button @click="aa">提交</button>
+        <span>计算结果：{{result}}</span>
+    </div>
+    <script type='text/javascript'>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                operation: '0',
+                a: '',
+                b: '',
+                result: '0'
+            },
+            methods: {
+                aa: function() {
+                    if (this.operation === "0") {
+                        this.result = Number(this.a) + Number(this.b);
+                    } else if (this.operation === "1") {
+                        this.result = Number(this.a) - Number(this.b);
+                    } else if (this.operation === "2") {
+                        this.result = Number(this.a) * Number(this.b);
+                    } else if (this.operation === "3") {
+                        this.result = Number(this.a) / Number(this.b);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

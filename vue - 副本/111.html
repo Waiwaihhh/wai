@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script type='text/javascript' src='./vue.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <ul :key='item.id' v-for="(item,index) in arr">
+            <li>
+                <input type="checkbox" name="" id="" :value="index" @click="aa" v-model="this.flag">
+                <span>品牌：{{item.pinpai}}</span>
+                <span>单价：{{item.danjia}}元</span>
+                <span>数量：{{item.shuliang}}件</span>
+            </li>
+        </ul>
+        <p>总价：{{princes}}</p>
+    </div>
+    <script type='text/javascript'>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                princes: 0,
+                arr: [],
+                arr: [{
+                    id: 1,
+                    pinpai: '耐克',
+                    danjia: '20',
+                    shuliang: '2'
+                }, {
+                    id: 2,
+                    pinpai: '阿迪',
+                    danjia: '50',
+                    shuliang: '2'
+                }, {
+                    id: 3,
+                    pinpai: '匡威',
+                    danjia: '200',
+                    shuliang: '2'
+                }, {
+                    id: 4,
+                    pinpai: '万斯',
+                    danjia: '150',
+                    shuliang: '2'
+                }]
+            },
+            methods: {
+                aa: function(event) {
+                    this.flag = !this.flag
+                    this.arr.forEach(item => {
+                        if (this.flag == true) {
+                            let index = event.target.value;
+                            let princes = Number(this.arr[index].danjia) * Number(this.arr[index].shuliang);
+                            console.log(princes);
+
+                        }
+                    });
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
