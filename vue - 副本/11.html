@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script type='text/javascript' src='vue.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- <div>{{msg}}</div> -->
+        <button @click='aa'>浪~浪</button>
+        <button @click='bb'>不浪了~</button><br>
+        <h1>{{msg}}</h1>
+    </div>
+    <script type='text/javascript'>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '哈哈嘻嘻哈哈嘻嘻',
+                timer: null
+            },
+            methods: {
+                aa() {
+                    this.timer = setInterval(() => {
+                        let str = this.msg
+                        let newStr = str.split("")
+                        let a = newStr.slice(1, newStr.length)
+                        let b = newStr.slice(0, 1)
+                        a.push(b)
+                        this.msg = a.join('')
+                    }, 300)
+                },
+                bb() {
+                    clearInterval(this.timer)
+                    this.timer = null
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
